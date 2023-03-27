@@ -1,6 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
+import { SignInButton, useUser } from "@clerk/nextjs";
 import { api } from "~/utils/api";
 
 const CreatePostWizard = () => {
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
             {user.isSignedIn && <CreatePostWizard />}
           </div>
           <div className="flex flex-col">
-            {[...data, ...data]?.map((post) => (
+            {[...data, ...data]?.map(({ post, author }) => (
               <div key={post.id} className="border-b border-slate-400 p-8">
                 {post.content}
               </div>
